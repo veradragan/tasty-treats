@@ -1,0 +1,30 @@
+<div class="home-container">
+  <div class="welcome-message">
+    <h1>Welcome to Tasty Treats!</h1>
+    <p>Discover delicious recipes from around the world</p>
+  </div>
+
+  <h2>Categories</h2>
+  <div class="categories-container">
+    <div *ngFor="let category of categories">
+      <mat-card>
+        <mat-card-title class="title">{{
+          category.strCategory
+        }}</mat-card-title>
+
+        <img
+          mat-card-image
+          class="image"
+          src="{{ category.strCategoryThumb }}"
+        />
+      </mat-card>
+    </div>
+  </div>
+
+  <h2>Areas</h2>
+  <div class="areas-container">
+    <mat-card *ngFor="let area of areas">
+      <mat-card-title class="title">{{ area.strArea }}</mat-card-title>
+    </mat-card>
+  </div>
+</div>
