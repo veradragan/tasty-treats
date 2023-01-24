@@ -1,0 +1,43 @@
+<div class="search-container">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Search for a meal</mat-label>
+      <input matInput type="text" [(ngModel)]="mealName" name="mealName" />
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="onSearch()">
+      Search
+    </button>
+    <div *ngIf="!searchedMeal && hasSearched">Recipe not found</div>
+  </form>
+
+  <div *ngIf="searchedMeal" class="recipe-detail-container">
+    <mat-card class="image-card">
+      <mat-card-title>{{ searchedMeal.strMeal }}</mat-card-title>
+      <img mat-card-image [src]="searchedMeal.strMealThumb" />
+      <mat-card-content>
+        <h2>Instructions</h2>
+        <p>
+          <ng-container
+            *ngFor="let line of searchedMeal.strInstructions.split('\r\n')"
+          >
+            {{ line }}<br /><br />
+          </ng-container>
+        </p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="ingredients-card">
+      <mat-card-title>Ingredients</mat-card-title>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let ingredient of ingredients; let i = index">
+            <mat-icon mat-list-icon>local_dining</mat-icon>
+            <h3 mat-line>{{ ingredient.measure }}</h3>
+            <p mat-line>{{ ingredient.name }}</p>
+            <mat-divider *ngIf="i !== ingredients.length - 1"></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
