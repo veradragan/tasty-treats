@@ -1,0 +1,17 @@
+.search-container {
+  margin: 20px 90px;
+  display: flexbox;
+}
+
+.recipe-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-card {
+  flex: 1;
+}
+
+.ingredients-card {
+  flex: 0.5;
+}
